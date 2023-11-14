@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ampliacion-bases-de-datos"
+version = "0.1.0"
+description = "Contenidos de la asignatura de ampliacion de bases de datos del grado INSO en U-Tad"
+authors = ["adriantoral <adrian.rubiboy11@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<=3.12"
+dnspython = "2.4.2"
+geographiclib = "2.0"
+geojson = "3.0.1"
+geopy = "2.4.0"
+pymongo = "4.5.0"
+pyyaml = "6.0.1"
+redis = "5.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

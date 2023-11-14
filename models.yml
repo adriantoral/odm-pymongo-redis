@@ -1,0 +1,33 @@
+Persona:
+  required_vars:
+    - nombre
+    - apellido
+    - dni
+  admissible_vars:
+    - _id
+    - edad
+    - genero
+    - coordenadas
+    - direccion
+    - centro_educativo
+    - empresa
+    - telefono
+    - descripcion
+    - anio_estudios_terminados
+    - promedio_estudios
+
+Empresa:
+  required_vars:
+    - nombre
+    - cif
+  admissible_vars:
+    - _id
+    - direccion
+
+CentroEducativo:
+  required_vars:
+    - nombre
+    - numero_centro
+  admissible_vars:
+    - _id
+    - direccion
