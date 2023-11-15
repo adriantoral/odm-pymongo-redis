@@ -1,0 +1,52 @@
+[
+  {
+    "nombre": "Empresa A",
+    "cif": "123456789A",
+    "direccion": "Calle de la Empresa A 1"
+  },
+  {
+    "nombre": "Empresa B",
+    "cif": "987654321B",
+    "direccion": "Avenida de la Empresa B 2"
+  },
+  {
+    "nombre": "Empresa C",
+    "cif": "567890123C",
+    "direccion": "Calle de la Empresa C 3"
+  },
+  {
+    "nombre": "Empresa D",
+    "cif": "234567890D",
+    "direccion": "Avenida de la Empresa D 4"
+  },
+  {
+    "nombre": "Empresa E",
+    "cif": "678901234E",
+    "direccion": "Calle de la Empresa E 5"
+  },
+  {
+    "nombre": "Empresa F",
+    "cif": "345678901F",
+    "direccion": "Avenida de la Empresa F 6"
+  },
+  {
+    "nombre": "Empresa G",
+    "cif": "789012345G",
+    "direccion": "Calle de la Empresa G 7"
+  },
+  {
+    "nombre": "Empresa H",
+    "cif": "456789012H",
+    "direccion": "Avenida de la Empresa H 8"
+  },
+  {
+    "nombre": "Empresa I",
+    "cif": "890123456I",
+    "direccion": "Calle de la Empresa I 9"
+  },
+  {
+    "nombre": "MICROSOFT",
+    "cif": "MSFT123",
+    "direccion": "Avenida de MICROSOFT 10"
+  }
+]

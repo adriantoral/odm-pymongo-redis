@@ -1,0 +1,298 @@
+{
+  "Personas": [
+    {
+      "nombre": "Juan",
+      "apellido": "Gomez",
+      "dni": "123456789",
+      "edad": 28,
+      "genero": "Masculino",
+      "direccion": "Madrid",
+      "centro_educativo": "UPM",
+      "empresa": "Google",
+      "telefono": "555-123-4567",
+      "descripcion": "Big Data",
+      "anio_estudios_terminados": 2018,
+      "promedio_estudios": 8,
+      "coordenadas": {
+        "latitud": 40.416775,
+        "longitud": -3.703790
+      }
+    },
+    {
+      "nombre": "Ana",
+      "apellido": "Rodriguez",
+      "dni": "987654321",
+      "edad": 35,
+      "genero": "Femenino",
+      "direccion": "Barcelona",
+      "centro_educativo": "Colegio Y",
+      "empresa": "Empresa B",
+      "telefono": "555-987-6543",
+      "descripcion": "Inteligencia Artificial",
+      "anio_estudios_terminados": 2017,
+      "promedio_estudios": 7,
+      "coordenadas": {
+        "latitud": 41.385064,
+        "longitud": 2.173403
+      }
+    },
+    {
+      "nombre": "Carlos",
+      "apellido": "Martinez",
+      "dni": "567890123",
+      "edad": 42,
+      "genero": "Masculino",
+      "direccion": "Valencia",
+      "centro_educativo": "UPM",
+      "empresa": "Empresa C",
+      "telefono": "555-567-8901",
+      "descripcion": "Ciberseguridad",
+      "anio_estudios_terminados": 2019,
+      "promedio_estudios": 9,
+      "coordenadas": {
+        "latitud": 39.469907,
+        "longitud": -0.376288
+      }
+    },
+    {
+      "nombre": "Laura",
+      "apellido": "Lopez",
+      "dni": "876543210",
+      "edad": 29,
+      "genero": "Femenino",
+      "direccion": "Sevilla",
+      "centro_educativo": "Escuela ABC",
+      "empresa": "Empresa D",
+      "telefono": "555-876-5432",
+      "descripcion": "Big Data",
+      "anio_estudios_terminados": 2016,
+      "promedio_estudios": 6,
+      "coordenadas": {
+        "latitud": 37.389092,
+        "longitud": -5.984459
+      }
+    },
+    {
+      "nombre": "Pedro",
+      "apellido": "Santos",
+      "dni": "234567890",
+      "edad": 32,
+      "genero": "Masculino",
+      "direccion": "Madrid",
+      "centro_educativo": "UAM",
+      "empresa": "Empresa E",
+      "telefono": "555-234-5678",
+      "descripcion": "Inteligencia Artificial",
+      "anio_estudios_terminados": 2020,
+      "promedio_estudios": 7,
+      "coordenadas": {
+        "latitud": 40.427597,
+        "longitud": -3.708260
+      }
+    },
+    {
+      "nombre": "Marta",
+      "apellido": "Gonzalez",
+      "dni": "345678901",
+      "edad": 40,
+      "genero": "Femenino",
+      "direccion": "Alicante",
+      "centro_educativo": "Instituto GHI",
+      "empresa": "Empresa F",
+      "telefono": "555-345-6789",
+      "descripcion": "Big Data",
+      "anio_estudios_terminados": 2017,
+      "promedio_estudios": 8,
+      "coordenadas": {
+        "latitud": 38.345996,
+        "longitud": -0.481003
+      }
+    },
+    {
+      "nombre": "Luis",
+      "apellido": "Fernandez",
+      "dni": "654321098",
+      "edad": 25,
+      "genero": "Masculino",
+      "direccion": "Madrid",
+      "centro_educativo": "UAM",
+      "empresa": "Empresa G",
+      "telefono": "555-654-3210",
+      "descripcion": "Ciberseguridad",
+      "anio_estudios_terminados": 2018,
+      "promedio_estudios": 9,
+      "coordenadas": {
+        "latitud": 40.448841,
+        "longitud": -3.692307
+      }
+    },
+    {
+      "nombre": "Elena",
+      "apellido": "Perez",
+      "dni": "432109876",
+      "edad": 37,
+      "genero": "Femenino",
+      "direccion": "Zaragoza",
+      "centro_educativo": "Colegio XYZ",
+      "empresa": "Empresa H",
+      "telefono": "555-432-1098",
+      "descripcion": "Inteligencia Artificial",
+      "anio_estudios_terminados": 2019,
+      "promedio_estudios": 7,
+      "coordenadas": {
+        "latitud": 41.648822,
+        "longitud": -0.889085
+      }
+    },
+    {
+      "nombre": "Andres",
+      "apellido": "Ramirez",
+      "dni": "789012345",
+      "edad": 31,
+      "genero": "Masculino",
+      "direccion": "Madrid",
+      "centro_educativo": "Microsoft",
+      "empresa": "Microsoft",
+      "telefono": "555-789-0123",
+      "descripcion": "Ciberseguridad",
+      "anio_estudios_terminados": 2020,
+      "promedio_estudios": 8,
+      "coordenadas": {
+        "latitud": 40.426126,
+        "longitud": -3.694548
+      }
+    },
+    {
+      "nombre": "Sara",
+      "apellido": "Lopez",
+      "dni": "567890123",
+      "edad": 29,
+      "genero": "Femenino",
+      "direccion": "Madrid",
+      "centro_educativo": "UAM",
+      "empresa": "Empresa J",
+      "telefono": "555-567-8901",
+      "descripcion": "Big Data",
+      "anio_estudios_terminados": 2016,
+      "promedio_estudios": 6,
+      "coordenadas": {
+        "latitud": 40.408387,
+        "longitud": -3.670154
+      }
+    }
+  ],
+  "Empresas": [
+    {
+      "nombre": "Empresa A",
+      "cif": "123456789A",
+      "direccion": "Calle de la Empresa A 1"
+    },
+    {
+      "nombre": "Empresa B",
+      "cif": "987654321B",
+      "direccion": "Avenida de la Empresa B 2"
+    },
+    {
+      "nombre": "Empresa C",
+      "cif": "567890123C",
+      "direccion": "Calle de la Empresa C 3"
+    },
+    {
+      "nombre": "Empresa D",
+      "cif": "234567890D",
+      "direccion": "Avenida de la Empresa D 4"
+    },
+    {
+      "nombre": "Empresa E",
+      "cif": "678901234E",
+      "direccion": "Calle de la Empresa E 5"
+    },
+    {
+      "nombre": "Empresa F",
+      "cif": "345678901F",
+      "direccion": "Avenida de la Empresa F 6"
+    },
+    {
+      "nombre": "Empresa G",
+      "cif": "789012345G",
+      "direccion": "Calle de la Empresa G 7"
+    },
+    {
+      "nombre": "Empresa H",
+      "cif": "456789012H",
+      "direccion": "Avenida de la Empresa H 8"
+    },
+    {
+      "nombre": "Empresa I",
+      "cif": "890123456I",
+      "direccion": "Calle de la Empresa I 9"
+    },
+    {
+      "nombre": "MICROSOFT",
+      "cif": "MSFT123",
+      "direccion": "Avenida de MICROSOFT 10"
+    }
+  ],
+  "CentrosEducativos": [
+    {
+      "nombre": "Escuela X",
+      "numero_centro": "001",
+      "direccion": "Calle de la Escuela X 1"
+    },
+    {
+      "nombre": "Colegio Y",
+      "numero_centro": "002",
+      "direccion": "Avenida del Colegio Y 2"
+    },
+    {
+      "nombre": "Instituto Z",
+      "numero_centro": "003",
+      "direccion": "Calle del Instituto Z 3"
+    },
+    {
+      "nombre": "Escuela ABC",
+      "numero_centro": "004",
+      "direccion": "Avenida de la Escuela ABC 4"
+    },
+    {
+      "nombre": "Colegio DEF",
+      "numero_centro": "005",
+      "direccion": "Calle del Colegio DEF 5"
+    },
+    {
+      "nombre": "Instituto GHI",
+      "numero_centro": "006",
+      "direccion": "Avenida del Instituto GHI 6"
+    },
+    {
+      "nombre": "Escuela 123",
+      "numero_centro": "007",
+      "direccion": "Calle de la Escuela 123 7"
+    },
+    {
+      "nombre": "Colegio XYZ",
+      "numero_centro": "008",
+      "direccion": "Avenida del Colegio XYZ 8"
+    },
+    {
+      "nombre": "Instituto MNO",
+      "numero_centro": "009",
+      "direccion": "Calle del Instituto MNO 9"
+    },
+    {
+      "nombre": "Escuela 456",
+      "numero_centro": "010",
+      "direccion": "Avenida de la Escuela 456 10"
+    },
+    {
+      "nombre": "UAM",
+      "numero_centro": "011",
+      "direccion": "Avenida de la UAM 11"
+    },
+    {
+      "nombre": "UPM",
+      "numero_centro": "012",
+      "direccion": "Avenida de la UPM 12"
+    }
+  ]
+}

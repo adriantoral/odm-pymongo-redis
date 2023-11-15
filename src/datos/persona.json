@@ -1,0 +1,182 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Gomez",
+    "dni": "123456789",
+    "edad": 28,
+    "genero": "Masculino",
+    "direccion": "Madrid",
+    "centro_educativo": "UPM",
+    "empresa": "Google",
+    "telefono": "555-123-4567",
+    "descripcion": "Big Data",
+    "anio_estudios_terminados": 2018,
+    "promedio_estudios": 8,
+    "coordenadas": {
+      "latitud": 40.416775,
+      "longitud": -3.70379
+    }
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "Rodriguez",
+    "dni": "987654321",
+    "edad": 35,
+    "genero": "Femenino",
+    "direccion": "Barcelona",
+    "centro_educativo": "Colegio Y",
+    "empresa": "Empresa B",
+    "telefono": "555-987-6543",
+    "descripcion": "Inteligencia Artificial",
+    "anio_estudios_terminados": 2017,
+    "promedio_estudios": 7,
+    "coordenadas": {
+      "latitud": 41.385064,
+      "longitud": 2.173403
+    }
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "Martinez",
+    "dni": "567890123",
+    "edad": 42,
+    "genero": "Masculino",
+    "direccion": "Valencia",
+    "centro_educativo": "UPM",
+    "empresa": "Empresa C",
+    "telefono": "555-567-8901",
+    "descripcion": "Ciberseguridad",
+    "anio_estudios_terminados": 2019,
+    "promedio_estudios": 9,
+    "coordenadas": {
+      "latitud": 39.469907,
+      "longitud": -0.376288
+    }
+  },
+  {
+    "nombre": "Laura",
+    "apellido": "Lopez",
+    "dni": "876543210",
+    "edad": 29,
+    "genero": "Femenino",
+    "direccion": "Sevilla",
+    "centro_educativo": "Escuela ABC",
+    "empresa": "Empresa D",
+    "telefono": "555-876-5432",
+    "descripcion": "Big Data",
+    "anio_estudios_terminados": 2016,
+    "promedio_estudios": 6,
+    "coordenadas": {
+      "latitud": 37.389092,
+      "longitud": -5.984459
+    }
+  },
+  {
+    "nombre": "Pedro",
+    "apellido": "Santos",
+    "dni": "234567890",
+    "edad": 32,
+    "genero": "Masculino",
+    "direccion": "Madrid",
+    "centro_educativo": "UAM",
+    "empresa": "Empresa E",
+    "telefono": "555-234-5678",
+    "descripcion": "Inteligencia Artificial",
+    "anio_estudios_terminados": 2020,
+    "promedio_estudios": 7,
+    "coordenadas": {
+      "latitud": 40.427597,
+      "longitud": -3.70826
+    }
+  },
+  {
+    "nombre": "Marta",
+    "apellido": "Gonzalez",
+    "dni": "345678901",
+    "edad": 40,
+    "genero": "Femenino",
+    "direccion": "Alicante",
+    "centro_educativo": "Instituto GHI",
+    "empresa": "Empresa F",
+    "telefono": "555-345-6789",
+    "descripcion": "Big Data",
+    "anio_estudios_terminados": 2017,
+    "promedio_estudios": 8,
+    "coordenadas": {
+      "latitud": 38.345996,
+      "longitud": -0.481003
+    }
+  },
+  {
+    "nombre": "Luis",
+    "apellido": "Fernandez",
+    "dni": "654321098",
+    "edad": 25,
+    "genero": "Masculino",
+    "direccion": "Madrid",
+    "centro_educativo": "UAM",
+    "empresa": "Empresa G",
+    "telefono": "555-654-3210",
+    "descripcion": "Ciberseguridad",
+    "anio_estudios_terminados": 2018,
+    "promedio_estudios": 9,
+    "coordenadas": {
+      "latitud": 40.448841,
+      "longitud": -3.692307
+    }
+  },
+  {
+    "nombre": "Elena",
+    "apellido": "Perez",
+    "dni": "432109876",
+    "edad": 37,
+    "genero": "Femenino",
+    "direccion": "Zaragoza",
+    "centro_educativo": "Colegio XYZ",
+    "empresa": "Empresa H",
+    "telefono": "555-432-1098",
+    "descripcion": "Inteligencia Artificial",
+    "anio_estudios_terminados": 2019,
+    "promedio_estudios": 7,
+    "coordenadas": {
+      "latitud": 41.648822,
+      "longitud": -0.889085
+    }
+  },
+  {
+    "nombre": "Andres",
+    "apellido": "Ramirez",
+    "dni": "789012345",
+    "edad": 31,
+    "genero": "Masculino",
+    "direccion": "Madrid",
+    "centro_educativo": "Microsoft",
+    "empresa": "Microsoft",
+    "telefono": "555-789-0123",
+    "descripcion": "Ciberseguridad",
+    "anio_estudios_terminados": 2020,
+    "promedio_estudios": 8,
+    "coordenadas": {
+      "latitud": 40.426126,
+      "longitud": -3.694548
+    }
+  },
+  {
+    "nombre": "Sara",
+    "apellido": "Lopez",
+    "dni": "567890123",
+    "edad": 29,
+    "genero": "Femenino",
+    "direccion": "Madrid",
+    "centro_educativo": "UAM",
+    "empresa": "Empresa J",
+    "telefono": "555-567-8901",
+    "descripcion": "Big Data",
+    "anio_estudios_terminados": 2016,
+    "promedio_estudios": 6,
+    "coordenadas": {
+      "latitud": 40.408387,
+      "longitud": -3.670154
+    }
+  }
+]

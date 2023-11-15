@@ -1,0 +1,62 @@
+[
+  {
+    "nombre": "Escuela X",
+    "numero_centro": "001",
+    "direccion": "Calle de la Escuela X 1"
+  },
+  {
+    "nombre": "Colegio Y",
+    "numero_centro": "002",
+    "direccion": "Avenida del Colegio Y 2"
+  },
+  {
+    "nombre": "Instituto Z",
+    "numero_centro": "003",
+    "direccion": "Calle del Instituto Z 3"
+  },
+  {
+    "nombre": "Escuela ABC",
+    "numero_centro": "004",
+    "direccion": "Avenida de la Escuela ABC 4"
+  },
+  {
+    "nombre": "Colegio DEF",
+    "numero_centro": "005",
+    "direccion": "Calle del Colegio DEF 5"
+  },
+  {
+    "nombre": "Instituto GHI",
+    "numero_centro": "006",
+    "direccion": "Avenida del Instituto GHI 6"
+  },
+  {
+    "nombre": "Escuela 123",
+    "numero_centro": "007",
+    "direccion": "Calle de la Escuela 123 7"
+  },
+  {
+    "nombre": "Colegio XYZ",
+    "numero_centro": "008",
+    "direccion": "Avenida del Colegio XYZ 8"
+  },
+  {
+    "nombre": "Instituto MNO",
+    "numero_centro": "009",
+    "direccion": "Calle del Instituto MNO 9"
+  },
+  {
+    "nombre": "Escuela 456",
+    "numero_centro": "010",
+    "direccion": "Avenida de la Escuela 456 10"
+  },
+  {
+    "nombre": "UAM",
+    "numero_centro": "011",
+    "direccion": "Avenida de la UAM 11"
+  },
+  {
+    "nombre": "UPM",
+    "numero_centro": "012",
+    "direccion": "Avenida de la UPM 12"
+  }
+]
