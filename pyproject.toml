@@ -1,12 +1,12 @@
 [tool.poetry]
-name = "ampliacion-bases-de-datos"
+name = "odm-pymongo-redis"
 version = "0.1.0"
-description = "Contenidos de la asignatura de ampliacion de bases de datos del grado INSO en U-Tad"
+description = "Aplicacion ODM de mongodb, redis y neo4j"
 authors = ["adriantoral <adrian.rubiboy11@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<=3.12"
+python = ">=3.11,<3.12"
 dnspython = "2.4.2"
 geographiclib = "2.0"
 geojson = "3.0.1"
