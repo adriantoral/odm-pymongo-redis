@@ -1,5 +1,4 @@
 import hashlib
-import time
 import uuid
 
 import redis
