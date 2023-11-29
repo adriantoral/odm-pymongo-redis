@@ -14,6 +14,13 @@ def hacer_query(query, parameters=None):
         return result.data()
 
 
+class TipoNodos(enum.Enum):
+    PERSONA = "Persona"
+    EMPRESA = "Empresa"
+    CENTRO_EDUCATIVO = "CentroEducativo"
+    MENSAJE = "Mensaje"
+
+
 class TipoConexion(enum.Enum):
     AMIGO = "Amigo"
     FAMILIAR = "Familiar"
@@ -33,36 +40,28 @@ class Nodo:
 
     def datos(self):
         result = ""
-        for key, value in self.__dict__.items():
-            if key != "idnodo": result += f'{key}: "{value}", '
+        for key, value in self.__dict__.items(): result += f'{key}: "{value}", '
         return "{" + result[:-2] + "}"
 
-    def crear(self): hacer_query(f'merge (nodo:{self.tipo} {self.datos()}) return id(nodo) as idnodo')
+    def crear(self): hacer_query(f'merge (nodo:{self.tipo} {self.datos()})')
 
     def crear_conexion(self, nodo, tipo_conexion: TipoConexion):
-        return hacer_query(f'merge (nodo1:{self.tipo} {self.datos()}) '
-                           f'merge (nodo2:{nodo.tipo} {nodo.datos()}) '
-                           f'merge (nodo1) - [:{tipo_conexion.value}] -> (nodo2)'
-                           f'return id(nodo1) as idnodo1, id(nodo2) as idnodo2'
-                           )
+        hacer_query(f'merge (nodo1:{self.tipo} {self.datos()}) '
+                    f'merge (nodo2:{nodo.tipo} {nodo.datos()}) '
+                    f'merge (nodo1) - [:{tipo_conexion.value}] -> (nodo2)'
+                    )
 
 
-class Conversacion(Nodo):
+class Mensaje(Nodo):
     """
-    Tipo de conversacion
+    Tipo de mensaje
     """
 
-    def __init__(self):
-        self.tipo = "Conversacion"
-        self.id_mensaje = 0
-
-    def crear_mensaje(self, propietario: str, texto: str, fecha: str, hora: str):
-        # Crear mensaje
-        mensaje = Mensaje(self.id_mensaje, propietario, texto, fecha, hora)
-        self.id_mensaje += 1
-
-        # Crear conexion de la conversacion con el mensaje
-        self.crear_conexion(mensaje, TipoConexion.MENSAJE)
+    def __init__(self, texto: str, timestamp: str, hora: str):
+        self.tipo = TipoNodos.MENSAJE.value
+        self.texto = texto
+        self.timestamp = timestamp
+        self.hora = hora
 
 
 class Persona(Nodo):
@@ -71,39 +70,17 @@ class Persona(Nodo):
     """
 
     def __init__(self, nombre: str, apellido: str, edad: int, sexo: str):
-        self.tipo = "Persona"
+        self.tipo = TipoNodos.PERSONA.value
         self.nombre = nombre
         self.apellido = apellido
         self.edad = edad
         self.sexo = sexo
 
-    def crear_conversacion(self, persona: Self) -> Conversacion:
-        # Crear conversacion
-        conversacion = Conversacion()
-        conversacion.crear()
-
-        # Crear conexiones de las personas con la conversacion
-        self.crear_conexion(conversacion, TipoConexion.CONVERSACION)
-        persona.crear_conexion(conversacion, TipoConexion.CONVERSACION)
-
-        return conversacion
-
-    def crear_conversacion(self, conversacion: Conversacion, persona: Self):
-        pass
-
-
-class Mensaje(Nodo):
-    """
-    Tipo de mensaje
-    """
-
-    def __init__(self, id_mensaje: int, propietario: str, texto: str, fecha: str, hora: str):
-        self.tipo = "Mensaje"
-        self.id_mensaje = id_mensaje
-        self.propietario = propietario
-        self.texto = texto
-        self.fecha = fecha
-        self.hora = hora
+    def crear_mensaje(self, persona: Self, mensaje: Mensaje):
+        hacer_query(f'merge (nodo1:{self.tipo} {self.datos()}) '
+                    f'merge (nodo2:{persona.tipo} {persona.datos()}) '
+                    f'merge (nodo1) - [:{mensaje.tipo} {mensaje.datos()}] -> (nodo2)'
+                    )
 
 
 class Empresa(Nodo):
@@ -112,7 +89,7 @@ class Empresa(Nodo):
     """
 
     def __init__(self, nombre: str, direccion: str):
-        self.tipo = "Empresa"
+        self.tipo = TipoNodos.EMPRESA.value
         self.nombre = nombre
         self.direccion = direccion
 
@@ -123,7 +100,7 @@ class CentroEducativo(Nodo):
     """
 
     def __init__(self, nombre: str, direccion: str):
-        self.tipo = "CentroEducativo"
+        self.tipo = TipoNodos.CENTRO_EDUCATIVO.value
         self.nombre = nombre
         self.direccion = direccion
 
@@ -145,10 +122,6 @@ if __name__ == '__main__':
     ies = CentroEducativo("IES", "Calle de la Constitución, 1, 28290 Las Rozas de Madrid, Madrid")
     ies.crear()
 
-    # Crear Conversaciones
-    conversacion1 = Conversacion()
-    conversacion1.crear()
-
     # Crear Conexiones
     adriantoral.crear_conexion(dariollodra, TipoConexion.AMIGO)
     dariollodra.crear_conexion(adriantoral, TipoConexion.AMIGO)
@@ -156,11 +129,16 @@ if __name__ == '__main__':
     adriantoral.crear_conexion(utad, TipoConexion.LABORAL)
     dariollodra.crear_conexion(ies, TipoConexion.ESTUDIO)
 
-    conversacion1.crear_mensaje(adriantoral.nombre, "Hola dario", "01/01/2021", "00:00:00")
-    conversacion1.crear_mensaje(dariollodra.nombre, "Hola adrian", "01/01/2021", "00:00:01")
-
-    adriantoral.crear_conexion(conversacion1, TipoConexion.CONVERSACION)
-    dariollodra.crear_conexion(conversacion1, TipoConexion.CONVERSACION)
+    adriantoral.crear_mensaje(dariollodra, Mensaje("Hola", "1701263134", "12:00"))
+    dariollodra.crear_mensaje(adriantoral, Mensaje("Hola", "1701263135", "12:00"))
+    adriantoral.crear_mensaje(dariollodra, Mensaje("Que tal?", "1701263136", "12:01"))
+    dariollodra.crear_mensaje(adriantoral, Mensaje("Bien", "1701263137", "12:01"))
+    adriantoral.crear_mensaje(dariollodra, Mensaje("Y tu?", "1701263138", "12:02"))
+    dariollodra.crear_mensaje(adriantoral, Mensaje("Bien", "1701263139", "12:02"))
+    adriantoral.crear_mensaje(dariollodra, Mensaje("Me alegro", "1701263140", "12:03"))
+    dariollodra.crear_mensaje(adriantoral, Mensaje("Gracias", "1701263141", "12:03"))
+    adriantoral.crear_mensaje(dariollodra, Mensaje("Adios", "1701263142", "12:04"))
+    dariollodra.crear_mensaje(adriantoral, Mensaje("Adios", "1701263143", "12:04"))
 
     # Cerrar conexion
     NEO4J_CONNECTION.close()
