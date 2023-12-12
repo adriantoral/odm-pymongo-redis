@@ -185,6 +185,17 @@ if __name__ == '__main__':
     davidcuadrado.crear_conexion(mariajimenez, TipoConexion.FAMILIAR)
     davidcuadrado.crear_conexion(lauraperez, TipoConexion.FAMILIAR)
 
+    # Crear relaciones 3
+    alexissanchez = Persona("Alexis", "Sanchez", 21, "M")
+    pabloperez = Persona("Pablo", "Perez", 21, "M")
+    marinarivers = Persona("Marina", "Rivers", 21, "M")
+
+    # Crear relaciones
+    adriantoral.crear_conexion(alexissanchez, TipoConexion.AMIGO)
+    dariollodra.crear_conexion(alexissanchez, TipoConexion.AMIGO)
+    dariollodra.crear_conexion(pabloperez, TipoConexion.AMIGO)
+    dariollodra.crear_conexion(marinarivers, TipoConexion.AMIGO)
+
     # Crear mensajes
     adriantoral.crear_mensaje(dariollodra, Mensaje("Hola", "1701263134", "12:00"))
     dariollodra.crear_mensaje(adriantoral, Mensaje("Hola", "1701263135", "12:00"))
@@ -196,6 +207,12 @@ if __name__ == '__main__':
     dariollodra.crear_mensaje(adriantoral, Mensaje("Gracias", "1701263141", "12:03"))
     adriantoral.crear_mensaje(dariollodra, Mensaje("Adios", "1701263142", "12:04"))
     dariollodra.crear_mensaje(adriantoral, Mensaje("Adios", "1701263143", "12:04"))
+
+    dariollodra.crear_mensaje(pabloperez, Mensaje("Hola", "1701263134", "12:00"))
+    dariollodra.crear_mensaje(pabloperez, Mensaje("Que tal?", "1701263136", "12:01"))
+    dariollodra.crear_mensaje(pabloperez, Mensaje("Bien", "1701263137", "12:01"))
+    dariollodra.crear_mensaje(marinarivers, Mensaje("Hola", "1701263134", "12:00"))
+    dariollodra.crear_mensaje(marinarivers, Mensaje("Que tal?", "1701263136", "12:01"))
 
     # Crear 2 empresas y 1 centro educativo
     utad = CentroEducativo("UTAD", "Edificio Madrid, Complejo Europa Empresarial, C. Playa de Liencres, 2 bis, 28290 Las Rozas de Madrid, Madrid")
@@ -222,15 +239,45 @@ if __name__ == '__main__':
     for x in adriantoral.get_amigos_y_familiares():
         print(x['relacion'])
 
+    query_1 = f'''
+    match (nodo:Persona {adriantoral.datos()}) - [:{TipoConexion.AMIGO.value}] -> (nodo2)
+    match (nodo:Persona {adriantoral.datos()}) - [:{TipoConexion.FAMILIAR.value}] -> (nodo3)
+    return COLLECT(DISTINCT nodo2) as amigos, COLLECT(DISTINCT nodo3) as familiares
+    '''
+    print('\nConsulta 1 - Obtener los amigos y familiares de un usuario (query)')
+    for x in hacer_query(query_1):
+        for y in x.keys():
+            for k in x[y]:
+                print(y, k)
+
     # Consulta 2 - Obtener los familiares de los familiares de un usuario
     print("\nConsulta 2 - Obtener los familiares de los familiares de un usuario")
     for x in adriantoral.get_familiares():
         for y in Persona(**x['nodo2']).get_familiares():
             print(y['relacion'])
 
+    query_2 = f'''
+    match (nodo:Persona {adriantoral.datos()}) - [:{TipoConexion.FAMILIAR.value}] -> (nodo2)
+    match (nodo2) - [:{TipoConexion.FAMILIAR.value}] -> (nodo3)
+    return COLLECT(DISTINCT nodo3) as familiares
+    '''
+    print('\nConsulta 2 - Obtener los familiares de los familiares de un usuario (query)')
+    for x in hacer_query(query_2):
+        for y in x['familiares']:
+            print(y)
+
     # Consulta 3 - Obtener los mensajes de un usuario
     print("\nConsulta 3 - Obtener los mensajes de un usuario")
     for x in [mensaje for mensaje in adriantoral.get_mensajes(dariollodra) if int(mensaje['relacion.timestamp']) >= 1701263138]:
+        print(x)
+
+    query_3 = f'''
+    match (nodo:Persona {adriantoral.datos()}) - [relacion:{TipoConexion.MENSAJE.value}] -> ()
+    where toInteger(relacion.timestamp) >= 1701263138
+    return relacion.texto, relacion.timestamp, relacion.hora
+    '''
+    print('\nConsulta 3 - Obtener los mensajes de un usuario (query)')
+    for x in hacer_query(query_3):
         print(x)
 
     # Consulta 4 - Obtener todos los mensajes entre dos usuarios
@@ -241,12 +288,64 @@ if __name__ == '__main__':
     ]:
         print(x)
 
+    query_4 = f'''
+    match (:Persona {adriantoral.datos()}) - [mensajes1:{TipoConexion.MENSAJE.value}] -> (:Persona {dariollodra.datos()})
+    match (:Persona {dariollodra.datos()}) - [mensajes2:{TipoConexion.MENSAJE.value}] -> (:Persona {adriantoral.datos()})
+    return COLLECT(DISTINCT {{text: mensajes1.texto, timestamp: mensajes1.timestamp, hora: mensajes1.hora}}) as adrian, COLLECT(DISTINCT {{text: mensajes2.texto, timestamp: mensajes2.timestamp, hora: mensajes2.hora}}) as dario
+    '''
+    print('\nConsulta 4 - Obtener todos los mensajes entre dos usuarios (query)')
+    for x in hacer_query(query_4):
+        for y in x.keys():
+            for k in x[y]:
+                print(y, k)
+
     # Consulta 5 - Obtener todos los usuarios mencionados por un usuario los cuales tengan una relación laboral con el usuario
     print("\nConsulta 5 - Obtener todos los usuarios mencionados por un usuario los cuales tengan una relación laboral con el usuario")
     for x in adriantoral.get_publicaciones():
         for y in Publicaciones(**x['nodo2']).get_menciones():
             if k := adriantoral.tiene_conexion(globals()[y['nodo2']['tipo']](**y['nodo2']), TipoConexion.LABORAL):
                 print(k)
+
+    query_5 = f'''
+    match (persona:Persona {adriantoral.datos()}) - [:{TipoConexion.PUBLICACIONES.value}] -> (publicacion:Publicaciones)
+    match (publicacion) - [menciones:{TipoConexion.MENCION.value}] -> (nodo)
+    match (persona) - [:{TipoConexion.LABORAL.value}] -> (nodo)
+    return COLLECT(nodo) as menciones
+    '''
+    print('\nConsulta 5 - Obtener todos los usuarios mencionados por un usuario los cuales tengan una relación laboral con el usuario (query)')
+    for x in hacer_query(query_5):
+        for y in x['menciones']:
+            print(y)
+
+    # Consulta 6 - Obtener los usuarios terceros
+    # Ya que el enunciado es un poco lioso, hemos entendido que hay que obtener los usuarios terceros
+    # que no tengan relacion con el usuario 1 pero sin con un usuario 2
+    query_6 = f'''
+    match (persona:Persona {adriantoral.datos()}) - [:{TipoConexion.AMIGO.value}] -> (amigo:Persona)
+    match (amigo) - [:{TipoConexion.AMIGO.value}] -> (amigo2:Persona)
+    where not (persona) - [:{TipoConexion.AMIGO.value}] -> (amigo2)
+    return COLLECT(amigo2) as terceros
+    '''
+    print('\nConsulta 6 - Obtener los usuarios terceros (query)')
+    for x in hacer_query(query_6):
+        for y in x['terceros']:
+            print(y)
+
+    # Consulta 7 - Obtener los usuarios terceros con mensajes
+    # Ya que el enunciado es un poco lioso, hemos entendido que hay que obtener los usuarios terceros
+    # que tengan N mensajes estre el usuario 2 y el usuario 3 y que no esten relacionados con el usuario 1
+    query_7 = f'''
+    match (persona:Persona {adriantoral.datos()}) - [:{TipoConexion.AMIGO.value}] -> (amigo:Persona)
+    match (amigo) - [:{TipoConexion.AMIGO.value}] -> (amigo2:Persona)
+    where not (persona) - [:{TipoConexion.AMIGO.value}] -> (amigo2)
+    match (amigo) - [mensajes:{TipoConexion.MENSAJE.value}] -> (amigo2)
+    with count(mensajes) as mensajes, amigo2
+    where mensajes > 2  // Cambia el 2 por el valor que quieras
+    return  amigo2
+    '''
+    print('\nConsulta 7 - Obtener los usuarios terceros con mensajes (query)')
+    for x in hacer_query(query_7):
+        print(x)
 
     # Cerrar conexion
     NEO4J_CONNECTION.close()
